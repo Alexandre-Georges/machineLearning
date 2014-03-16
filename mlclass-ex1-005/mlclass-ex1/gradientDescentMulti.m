@@ -19,10 +19,10 @@ for iter = 1:num_iters
 
 
 
-
-
-
-
+    H = repmat(theta', size(X, 1), 1) .* X;
+    J = (sum(H, 2) .- y)' * X;
+    derivative = J ./ size(X,1);
+    theta = theta - alpha * derivative';
 
 
 
