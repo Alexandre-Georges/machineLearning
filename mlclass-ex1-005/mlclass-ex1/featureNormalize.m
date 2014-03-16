@@ -27,11 +27,11 @@ sigma = zeros(1, size(X, 2));
 %       
 
 
+mu = repmat(mean(X), size(X, 1), 1);
+X_norm = X_norm .- mu;
 
-
-
-
-
+sigma = repmat(std(X), size(X, 1), 1);
+X_norm = X_norm ./ sigma;
 
 
 % ============================================================
