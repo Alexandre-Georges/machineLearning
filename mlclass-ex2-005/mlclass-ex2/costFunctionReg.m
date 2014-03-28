@@ -21,11 +21,8 @@ yEquals1 = (1 - y)' .* log(1 - sigmoid(theta' * X'));
 regularJ = - 1 / m * (sum(yEquals0) + sum(yEquals1));
 J = regularJ + lambda / (2 * m) * sum(theta(2:size(theta, 1)) .^ 2);
 
-
-
-
-
-
+regularGrad = (1 / m * (sigmoid(theta' * X') - y') * X)';
+grad = regularGrad + [0 ; lambda / m .* theta(2:size(theta, 1))];
 % =============================================================
 
 end
