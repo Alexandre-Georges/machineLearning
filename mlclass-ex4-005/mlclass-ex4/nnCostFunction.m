@@ -72,6 +72,10 @@ y_classes = repmat([1:1:num_labels], m, 1) == repmat(y, 1, size(Output_layer, 2)
 
 J = 1 / m * sum(sum(-y_classes .* log(Output_layer) - (1 - y_classes) .* log(1 - Output_layer)));
 
+reg = (lambda / (2 * m)) * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2)));
+
+J = J + reg;
+
 % -------------------------------------------------------------
 
 % =========================================================================
