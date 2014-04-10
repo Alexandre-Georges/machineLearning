@@ -62,23 +62,15 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+X_0 = [ones(m, 1) X];
+Hidden_layer = sigmoid(X_0 * Theta1');
 
+Hidden_layer_0 = [ones(m, 1) Hidden_layer];
+Output_layer = sigmoid(Hidden_layer_0 * Theta2');
 
+y_classes = repmat([1:1:num_labels], m, 1) == repmat(y, 1, size(Output_layer, 2));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+J = 1 / m * sum(sum(-y_classes .* log(Output_layer) - (1 - y_classes) .* log(1 - Output_layer)));
 
 % -------------------------------------------------------------
 
