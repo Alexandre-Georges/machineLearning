@@ -102,6 +102,18 @@ Theta2_grad = 1 / m * Delta_2;
 
 % =========================================================================
 
+reg_1 = Theta1;
+reg_1(:, 1) = zeros(size(reg_1(:, 1)));
+reg_1 = reg_1 * lambda / m;
+
+Theta1_grad = Theta1_grad + reg_1;
+
+reg_2 = Theta2;
+reg_2(:, 1) = zeros(size(reg_2(:, 1)));
+reg_2 = reg_2 * lambda / m;
+
+Theta2_grad = Theta2_grad + reg_2;
+
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
