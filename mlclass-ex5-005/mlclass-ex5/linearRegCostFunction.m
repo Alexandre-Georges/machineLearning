@@ -25,6 +25,11 @@ J = 1 / (2 * m) * sum((h - y) .^ 2) + regulation;
 
 % =========================================================================
 
+derivatives = 1 / m * sum(repmat(h - y, 1, size(X, 2)) .* X);
+lambdas = ones(size(derivatives)) * lambda;
+lambdas(:, 1) = 0;
+grad = derivatives + lambdas .* (theta' / m);
+
 grad = grad(:);
 
 end
