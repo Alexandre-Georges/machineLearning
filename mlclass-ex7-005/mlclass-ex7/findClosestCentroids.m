@@ -21,11 +21,12 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for example_index = 1:size(X, 1),
+  example = repmat(X(example_index, :), K, 1);
+  gaps = sum((example .- centroids) .^ 2, 2);
+  [minimum, index] = min(gaps);
+  idx(example_index) = index;
+end;
 
 % =============================================================
 
