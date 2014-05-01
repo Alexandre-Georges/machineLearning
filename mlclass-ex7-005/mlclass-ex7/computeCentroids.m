@@ -26,12 +26,12 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
-
+for centroid_index = 1:K,
+  binary_idx = idx == centroid_index;
+  idx_number = sum(binary_idx, 1);
+  binary_X = X .* repmat(binary_idx, 1, n);
+  centroids(centroid_index, :) = sum(binary_X, 1) ./ idx_number;
+end;
 
 % =============================================================
 
